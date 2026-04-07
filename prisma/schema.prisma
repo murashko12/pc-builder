@@ -30,7 +30,7 @@ model Component {
   name String
   price Int
 
-  socket String
+  socket String?
 
   buildComponents BuildComponent[]
 }
@@ -80,6 +80,6 @@ enum ComponentType {
   ssd
   psu
   case
-  color
+  cooler
   motherboard
 }
