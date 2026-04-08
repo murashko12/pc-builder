@@ -54,9 +54,9 @@ export const {} = NextAuth({
     callbacks: {
         jwt({ token, user }) {
             if (user) {
-                token.id === user.id
+                token.id = user.id
                 token.email = user.email
-                token.name
+                token.name = user.name
             }
             return token
             
@@ -64,8 +64,8 @@ export const {} = NextAuth({
         session({ session, token }) {
             if (session.user) {
                 session.user.id = token.id
-                session.user.name = token.name
                 session.user.email = token.email
+                session.user.name = token.name
             }
             return session;
         }
