@@ -3,7 +3,7 @@ import Credentials from "next-auth/providers/credentials";
 import { prisma } from "./lib/db";
 import bcrypt from "bcryptjs";
 
-export const {} = NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
     providers: [
         Credentials({
             credentials: {
@@ -63,8 +63,8 @@ export const {} = NextAuth({
         },
         session({ session, token }) {
             if (session.user) {
-                session.user.id = token.id
-                session.user.email = token.email
+                session.user.id = token.id as string
+                session.user.email = token.email as string
                 session.user.name = token.name
             }
             return session;

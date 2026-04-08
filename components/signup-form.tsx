@@ -32,7 +32,13 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
           <FieldGroup>
             <Field>
               <FieldLabel htmlFor="name">Имя</FieldLabel>
-              <Input id="name" type="text" name="name" placeholder="John Doe" required />
+              <Input 
+                id="name" 
+                type="text" 
+                name="name" 
+                placeholder="Иванов Иван" 
+                required 
+              />
             </Field>
             <Field>
               <FieldLabel htmlFor="email">Email</FieldLabel>
@@ -46,7 +52,12 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
             </Field>
             <Field>
               <FieldLabel htmlFor="password">Пороль</FieldLabel>
-              <Input id="password" type="password" name="password" required />
+              <Input 
+                id="password" 
+                type="password" 
+                name="password" 
+                required 
+              />
               <FieldDescription>
                 Пароль дролжен быть больше 8 символов
               </FieldDescription>
