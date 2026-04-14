@@ -23,8 +23,12 @@ export function ComponentCard({
         </CardDescription>
       </CardHeader>
       <CardFooter className="pt-0">
-        <Button>
-          <Plus className="h-3.5 w-3.5" />
+        <Button
+          variant={"secondary"}
+          size={"sm"}
+          className="w-full gap-1.5"
+          onClick={onClick}
+        >
           Добавить
         </Button>
       </CardFooter>

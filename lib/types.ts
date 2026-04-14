@@ -29,9 +29,9 @@ export const dbTypeToCategoryId: Record<ComponentType, string> = {
   cpu: 'cpu',
   gpu: 'gpu',
   ram: 'ram',
-  ssd: 'storage',
+  ssd: 'ssd',
   psu: 'psu',
   case: 'case',
-  cooler: 'cooling',
+  cooler: 'cooler',
   motherboard: 'motherboard'
 }
