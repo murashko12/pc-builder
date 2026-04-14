@@ -14,6 +14,7 @@ import {
 import { Component, ComponentCategory } from "@/lib/types";
 import { Box, Cpu, Fan, HardDrive, MemoryStick, Monitor, Plus, Server, Zap } from "lucide-react";
 import { ElementType, useState } from "react";
+import { AddComponentDailogContent } from './add-component-dialog';
 
 const iconMap: Record<ComponentCategory['icon'], ElementType> = {
     Cpu,
@@ -84,6 +85,16 @@ export function TableParts({
                                                 { selected ? 'Изменить' : 'Добавить'}
                                             </Button>
                                         </DialogTrigger>
+                                        <AddComponentDailogContent 
+                                            categoryId={category.id} 
+                                            categoryName={category.name} 
+                                            onSelect={
+                                                (component) => {
+                                                    onSelectedComponent(category.id, component)
+                                                    setOpenCategoryId(null)
+                                                } 
+                                            }                                        
+                                        />
                                     </Dialog>
                                 </TableCell>
                             </TableRow> 

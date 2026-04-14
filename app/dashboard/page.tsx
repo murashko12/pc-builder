@@ -7,7 +7,7 @@ export default function Dashboard() {
         <CurrentBuild />
       </div>
       <aside className="shrink-0 lg:sticky lg:top-6 lg:w-64">
-        Poplar    
+        Popular    
       </aside>
     </div>
   )
