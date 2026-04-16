@@ -7,14 +7,15 @@ import type { Component } from "@/lib/types"
 import { useCallback, useState } from "react"
 import { TableParts } from "./table";
 import { componentCategories } from "@/lib/constants";
+import { SaveBuildDialog } from "./save-build-dialog";
 
 export const CurrentBuild = () => {
   const [selectedByCategory, setSelecetedByCategory] = useState<Record<string, Component | null>>({})
-    const [saveDialogOpen, setSaveDialogOpen] = useState(false)
+  const [saveDialogOpen, setSaveDialogOpen] = useState(false)
 
-    const onSelectComponent = useCallback((categoryId: string, component: Component | null) => {
-        setSelecetedByCategory(prev => ({...prev, [categoryId]: component}))
-    },[])
+  const onSelectComponent = useCallback((categoryId: string, component: Component | null) => {
+    setSelecetedByCategory(prev => ({...prev, [categoryId]: component}))
+  },[])
 
   return (
     <>
@@ -26,6 +27,11 @@ export const CurrentBuild = () => {
         <TableParts
           components={componentCategories}
           onSelectedComponent={onSelectComponent}
+          selectedByCategory={selectedByCategory}
+        />
+        <SaveBuildDialog
+          open={saveDialogOpen}
+          onOpenChange={setSaveDialogOpen}
           selectedByCategory={selectedByCategory}
         />
       </div>
