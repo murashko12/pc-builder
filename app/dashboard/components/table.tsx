@@ -6,6 +6,7 @@ import {
     Table,
     TableBody,
     TableCell,
+    TableFooter,
     TableHead,
     TableHeader,
     TableRow
@@ -102,6 +103,16 @@ export function TableParts({
                     })
                 }
             </TableBody>
+            <TableFooter>
+                <TableRow>
+                    <TableCell colSpan={5} className="rounded-2xl">
+                        <p className="font-medium">Цена сборки:</p>
+                        <p className="font-large text-gray-500">
+                            { new Intl.NumberFormat('ru-Ru').format(totalPrice) }
+                        </p>
+                    </TableCell>
+                </TableRow>
+            </TableFooter>
         </Table>
     )
 }
