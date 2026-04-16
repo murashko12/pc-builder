@@ -6,6 +6,7 @@ import {
     Table,
     TableBody,
     TableCell,
+    TableFooter,
     TableHead,
     TableHeader,
     TableRow
@@ -14,6 +15,7 @@ import {
 import { Component, ComponentCategory } from "@/lib/types";
 import { Box, Cpu, Fan, HardDrive, MemoryStick, Monitor, Plus, Server, Zap } from "lucide-react";
 import { ElementType, useState } from "react";
+import { AddComponentDailogContent } from './add-component-dialog';
 
 const iconMap: Record<ComponentCategory['icon'], ElementType> = {
     Cpu,
@@ -84,6 +86,16 @@ export function TableParts({
                                                 { selected ? 'Изменить' : 'Добавить'}
                                             </Button>
                                         </DialogTrigger>
+                                        <AddComponentDailogContent 
+                                            categoryId={category.id} 
+                                            categoryName={category.name} 
+                                            onSelect={
+                                                (component) => {
+                                                    onSelectedComponent(category.id, component)
+                                                    setOpenCategoryId(null)
+                                                } 
+                                            }                                        
+                                        />
                                     </Dialog>
                                 </TableCell>
                             </TableRow> 
@@ -91,6 +103,16 @@ export function TableParts({
                     })
                 }
             </TableBody>
+            <TableFooter>
+                <TableRow>
+                    <TableCell colSpan={5} className="rounded-2xl">
+                        <p className="font-medium">Цена сборки:</p>
+                        <p className="font-large text-gray-500">
+                            { new Intl.NumberFormat('ru-Ru').format(totalPrice) }
+                        </p>
+                    </TableCell>
+                </TableRow>
+            </TableFooter>
         </Table>
     )
 }
