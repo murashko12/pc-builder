@@ -1,13 +1,14 @@
 'use client'
 
 import { Component } from "@/lib/types";
-import { SaveBuildFromState } from "../actions";
+import { saveBuildAction, SaveBuildFromState } from "../actions";
 import { useRouter } from "next/navigation";
-import { useMemo, useRef } from "react";
+import { useActionState, useEffect, useMemo, useRef } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useFormStatus } from "react-dom";
+import { toast } from "sonner";
 
 
 type Props = {
@@ -30,6 +31,7 @@ export function SaveBuildDialog({
   const router = useRouter()
   const formRef = useRef<HTMLFormElement>(null);
   const { pending } = useFormStatus()
+  const [ state, formAction ] = useActionState(saveBuildAction, initialState)
 
   const componentIds = useMemo(() => {
     return Object
@@ -37,6 +39,19 @@ export function SaveBuildDialog({
       .filter((component): component is Component => component !== null)
       .map((component) => component.id)
   }, [selectedByCategory])
+
+  useEffect(() => {
+    if (state.status === 'success') {
+      toast.success('Сборка сохранена')
+      formRef.current?.reset();
+      onOpenChange(false);
+      if (redirectPath) {
+        router.push(redirectPath)
+      } else {
+        router.refresh()
+      }
+    }
+  }, [onOpenChange, redirectPath, router, state.status])
 
   const handleOpenChange = (nextOpen: boolean) => {
     if (!nextOpen) {
@@ -52,7 +67,11 @@ export function SaveBuildDialog({
           <DialogTitle>Сохранить сборку</DialogTitle>
           <DialogDescription>Введите название сборки</DialogDescription>
         </DialogHeader>
-        <form ref={formRef} className="space-y-4">
+        <form 
+          ref={formRef} 
+          action={formAction}
+          className="space-y-4"
+        >
           <Input 
             name="name"
             placeholder="Например: Игровой ПК"
