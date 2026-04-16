@@ -10,11 +10,11 @@ import { componentCategories } from "@/lib/constants";
 
 export const CurrentBuild = () => {
   const [selectedByCategory, setSelecetedByCategory] = useState<Record<string, Component | null>>({})
-    const [saveDialogOpen, setSaveDialogOpen] = useState(false)
+  const [saveDialogOpen, setSaveDialogOpen] = useState(false)
 
-    const onSelectComponent = useCallback((categoryId: string, component: Component | null) => {
-        setSelecetedByCategory(prev => ({...prev, [categoryId]: component}))
-    },[])
+  const onSelectComponent = useCallback((categoryId: string, component: Component | null) => {
+    setSelecetedByCategory(prev => ({...prev, [categoryId]: component}))
+  },[])
 
   return (
     <>
