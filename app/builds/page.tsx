@@ -3,6 +3,8 @@ import { TypographyH3 } from "@/components/ui/typography-h3";
 import { getMyBuilds } from "@/lib/builds";
 import { redirect } from "next/navigation";
 import { BuildCard } from "./components/builds-card";
+import { DeleteBuildButton } from "./components/delete-build-button";
+import { deleteBuildAction } from "./actions";
 
 export default async function MyBuilds() {
     const session = await auth();
@@ -25,7 +27,10 @@ export default async function MyBuilds() {
                             key={b.id}
                             build={b}
                             >
-                                G
+                                <DeleteBuildButton
+                                    buildId={b.id}
+                                    deleteAction={deleteBuildAction} 
+                                />
                             </BuildCard>
                         ))
                     ) : (

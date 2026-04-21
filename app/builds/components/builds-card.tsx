@@ -32,12 +32,12 @@ export function BuildCard({
     return (
         <Card className="felx flex-col">
             <CardHeader className="pb-2 flex flex-row items-start justify-between gap-2">
-                <div className="min-w-0 flex">
+                <div className="min-w-0 flex flex-col">
                     <CardTitle>
                         <TypographyH3>{ build.name }</TypographyH3>
                     </CardTitle>
                     <p className="text-xs text-muted-foreground mt-1">
-                        Создал: { build.user?.email?.trim() }
+                        Создал: <b>{ build.user?.email?.trim() }</b>
                     </p>
                 </div>
                 <div className="shrink-0">
