@@ -25,8 +25,8 @@ export default async function MyBuilds() {
                     builds.length > 0 ? (
                         builds.map(b => (
                             <BuildCard
-                            key={b.id}
-                            build={b}
+                                key={b.id}
+                                build={b}
                             >
                                 <DeleteBuildButton
                                     buildId={b.id}
@@ -37,21 +37,6 @@ export default async function MyBuilds() {
                                     isPublic={b.isPublic}
                                     toggleAction={setBuildPublicAction}
                                 />
-                                {/* <form 
-                                    action={setBuildPublicAction}
-                                    className="contents"
-                                >
-                                    <input type="hidden" name="buildId" value={b.id}/>
-                                    <input type="hidden" name="isPublic" value={b.isPublic ? 'false' : 'true'} />
-                                    <Button
-                                        type={"submit"}
-                                        variant={`${b.isPublic ? 'default' : 'ghost'}`}
-                                    >
-                                        <Share2 className={`
-                                            h-4 w-4 mr-1 ${b.isPublic ? 'fill-background' : ''}
-                                        `} />
-                                    </Button>
-                                </form> */}
                             </BuildCard>
                         ))
                     ) : (
