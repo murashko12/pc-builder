@@ -52,3 +52,54 @@ export async function deleteBuildAction(formData: FormData) {
 
     revalidatePath('/builds')
 }
+
+export async function toggleLikeAction(formData: FormData) {
+    const session = await auth()
+
+    if (!session?.user.id) {
+        return
+    }
+
+    const buildId = String(formData.get('buildId')) ?? ""
+    
+    if (!buildId) {
+        return
+    }
+
+    const build = await prisma.build.findUnique({
+        where: { id: buildId },
+        select: { isPublic: true }
+    })
+
+    if (!build?.isPublic) {
+        return
+    }
+
+    const existing = await prisma.like.findUnique({
+        where: {
+            userId_buildId: {
+                userId: session.user.id,
+                buildId
+            }
+        }
+    })
+
+    if (existing) {
+        await prisma.like.delete({
+            where: {
+                id: existing.id
+            }
+        })
+    } else {
+        await prisma.like.create({
+            data: {
+                userId: session.user.id,
+                buildId   
+            }
+        })
+    }
+
+    revalidatePath('/builds')
+    revalidatePath('/builds/explore')
+    revalidatePath('/dashboard')
+}

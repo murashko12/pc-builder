@@ -42,7 +42,7 @@ export function BuildCard({
                 </div>
                 <div className="shrink-0">
                     <Button>
-                        <Link href={`/builds/${ build.id }`}><Pencil className="h-4 w-4" /></Link>
+                        <Link href={`/builds/${ build.id }/edit`}><Pencil className="h-4 w-4" /></Link>
                     </Button>
                 </div>
             </CardHeader>
