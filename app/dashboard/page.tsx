@@ -1,4 +1,5 @@
 import { CurrentBuild } from "./components/current-build";
+import { PopularBuildCard } from "./components/popular-build-card";
 
 export default function Dashboard() {
   return (
@@ -6,8 +7,8 @@ export default function Dashboard() {
       <div className="min-w-0 flex-1">
         <CurrentBuild />
       </div>
-      <aside className="shrink-0 lg:sticky lg:top-6 lg:w-40">
-        Popular    
+      <aside className="shrink-0 lg:sticky lg:top-6 lg:w-80">
+        <PopularBuildCard />
       </aside>
     </div>
   )
