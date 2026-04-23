@@ -9,6 +9,7 @@ type Buildcard = {
     user: {
         email: string
     };
+    userId: string;
     id: string;
     name: string;
     totalPrice: number;
@@ -23,12 +24,16 @@ type Buildcard = {
 type Props = {
     build: Buildcard
     children?: ReactNode
+    currentUserId: string;
 }
 
 export function BuildCard({
     build,
-    children
+    children,
+    currentUserId
 }: Props) {
+    const isAuthor = build.userId === currentUserId;
+
     return (
         <Card className="felx flex-col">
             <CardHeader className="pb-2 flex flex-row items-start justify-between gap-2">
@@ -40,11 +45,15 @@ export function BuildCard({
                         Создал: <b>{ build.user?.email?.trim() }</b>
                     </p>
                 </div>
-                <div className="shrink-0">
-                    <Button>
-                        <Link href={`/builds/${ build.id }/edit`}><Pencil className="h-4 w-4" /></Link>
-                    </Button>
-                </div>
+                {isAuthor && (
+                    <div className="shrink-0">
+                        <Button asChild>
+                            <Link href={`/builds/${build.id}/edit`}>
+                                <Pencil className="h-4 w-4" />
+                            </Link>
+                        </Button>
+                    </div>
+                )}
             </CardHeader>
             <CardContent className="flex-1 pt-0 space-y-1 gap-2">
                 {

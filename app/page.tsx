@@ -10,7 +10,7 @@ export default function Home() {
           Создай свою сборку мечты
         </TypographyH1>
         <br />
-        <Button>
+        <Button className={"cursor-pointer"}>
           <Link href={"/dashboard"}>Собрать</Link>
         </Button>
       </main>

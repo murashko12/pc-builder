@@ -32,6 +32,7 @@ export function DeleteBuildButton({
             size={"sm"}
             disabled={isPending}
             onClick={handleClick}
+            className={"cursor-pointer"}
         >
             Удалить
         </Button>

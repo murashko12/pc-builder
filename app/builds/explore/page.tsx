@@ -13,6 +13,7 @@ export default async function ExplorePage() {
         notFound()
     }
 
+    const currentUserId = session.user.id
     const builds = await getPublicBuilds(session.user.id);
 
     return (
@@ -29,6 +30,7 @@ export default async function ExplorePage() {
                                     <BuildCard
                                         key={b.id}
                                         build={b}
+                                        currentUserId={currentUserId}
                                     >
                                         <div className="flex flex-wrap gap-2">
                                             <form action={toggleLikeAction} className={"contents"}>
@@ -37,6 +39,7 @@ export default async function ExplorePage() {
                                                     type="submit"
                                                     variant={ isLiked ? 'outline' : 'secondary' }
                                                     size="sm"
+                                                    className={"cursor-pointer"}
                                                 >
                                                     <ThumbsUp
                                                         className={`h-4 w-4 mr-1 ${ isLiked ? 'fill-current' : '' }`}

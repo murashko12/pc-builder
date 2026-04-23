@@ -54,7 +54,10 @@ export function LoginForm({
                 state?.error && <ErrorMessage message={state.error} />
               }
               <Field>
-                <Button type="submit">Войти</Button>
+                <Button 
+                  type="submit"
+                  className={"cursor-pointer"}
+                >Войти</Button>
                 <FieldDescription className="text-center">
                  У вас нету аккаунта? <a href="/signup">Зарегистрироваться</a>
                 </FieldDescription>

@@ -68,6 +68,7 @@ export function EditBuildForm({
                     Редактирование сборки - { buildName }
                 </TypographyH3>
                 <Button
+                    className={"cursor-pointer"}
                     onClick={() => setSaveDialogOpen(true)}
                 >
                     Сохранить

@@ -25,7 +25,7 @@ export function ComponentCard({
         <Button
           variant={"secondary"}
           size={"sm"}
-          className="w-full gap-1.5"
+          className="w-full gap-1.5 cursor-pointer"
           onClick={onClick}
         >
           Добавить

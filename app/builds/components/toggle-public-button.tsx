@@ -31,6 +31,7 @@ export function TogglePublicButton({
             size="sm"
             disabled={isPending}
             onClick={handleClick}
+            className={"cursor-pointer"}
         >
             <Share2 className={`h-4 w-4 mr-1 ${isPublic ? 'fill-background' : ''}`} />
         </Button>

@@ -71,7 +71,7 @@ function DialogContent({
           <DialogPrimitive.Close data-slot="dialog-close" asChild>
             <Button
               variant="ghost"
-              className="absolute top-4 right-4"
+              className="absolute top-4 right-4 cursor-pointer"
               size="icon-sm"
             >
               <XIcon
@@ -115,7 +115,10 @@ function DialogFooter({
       {children}
       {showCloseButton && (
         <DialogPrimitive.Close asChild>
-          <Button variant="outline">Close</Button>
+          <Button 
+            variant="outline"
+            className={"cursor-pointer"}
+          >Close</Button>
         </DialogPrimitive.Close>
       )}
     </div>

@@ -80,7 +80,11 @@ export function SaveBuildDialog({
           />
           <input type="hidden" name="componentIds" value={componentIds.join(',')} />
           <DialogFooter>
-            <Button type='submit' disabled={pending || componentIds.length === 0}>
+            <Button 
+              type='submit' 
+              disabled={pending || componentIds.length === 0}
+              className={"cursor-pointer"}
+            >
               { pending ? 'Сохраниение...' : 'Сохранить'}
             </Button>
           </DialogFooter>

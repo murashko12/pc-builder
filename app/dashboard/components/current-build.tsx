@@ -21,7 +21,10 @@ export const CurrentBuild = () => {
     <>
       <div className="flex justify-between mb-8">
         <TypographyH1>Собери свою сборку</TypographyH1>
-        <Button onClick={() => setSaveDialogOpen(true)}>Собрать</Button>
+        <Button 
+          onClick={() => setSaveDialogOpen(true)}
+          className={"cursor-pointer"}
+        >Собрать</Button>
       </div>
       <div className="min-w-0 overflow-x-auto">
         <TableParts

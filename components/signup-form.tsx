@@ -67,7 +67,10 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
             }
             <FieldGroup>
               <Field>
-                <Button type="submit">Создать аккаунт</Button>
+                <Button 
+                  type="submit"
+                  className={"cursor-pointer"}
+                >Создать аккаунт</Button>
                 
                 <FieldDescription className="px-6 text-center">
                   У вас уже есть аккаунт? <a href="/login">Войти</a>

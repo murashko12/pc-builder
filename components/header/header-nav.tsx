@@ -21,7 +21,10 @@ export function HeaderNav({ session }: Props) {
   if (!session?.user) {
     return (
       <div className="flex justify-end">
-        <Button variant={'secondary'}>
+        <Button 
+          variant={'secondary'}
+          className={"cursor-pointer"}
+        >
           <Link href={'/login'}>Войти</Link>
         </Button>
       </div>
@@ -61,6 +64,7 @@ export function HeaderNav({ session }: Props) {
           size={'sm'}
           type={'button'}
           onClick={() => signOut({ redirectTo: '/' })}
+          className={"cursor-pointer"}
         >
           <Link href={'/login'}>Выйти</Link>
         </Button>

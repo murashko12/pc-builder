@@ -14,6 +14,7 @@ export default async function MyBuilds() {
         redirect('/login')
     }
 
+    const currentUserId = session.user.id
     const builds = await getMyBuilds(session.user.id)
 
     return (
@@ -27,6 +28,7 @@ export default async function MyBuilds() {
                             <BuildCard
                                 key={b.id}
                                 build={b}
+                                currentUserId={currentUserId}
                             >
                                 <DeleteBuildButton
                                     buildId={b.id}

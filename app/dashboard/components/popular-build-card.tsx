@@ -41,7 +41,7 @@ export async function PopularBuildCard() {
                                 <Button
                                     variant={"ghost"}
                                     size={"icon"}
-                                    className="h-8 w-8 shrink-0"
+                                    className="h-8 w-8 shrink-0 cursor-pointer"
                                     asChild
                                 >
                                     <Link href={`/builds/${build.id}/edit`}>
